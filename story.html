@@ -418,28 +418,15 @@
   
 
   <link rel="stylesheet" href="html5/data/css/output.min.css" data-noprefix/>
-<audio id="background-audio" autoplay loop>
+<button id="play-btn">Play Musik</button>
+<audio id="background-audio" loop>
   <source src="musikku.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var audio = document.getElementById('background-audio');
-
-    // Coba autoplay jika user sudah pernah mengklik halaman
-    function startAudio() {
-      audio.play().catch((err) => {
-        console.warn("Autoplay gagal, menunggu interaksi pengguna.");
-      });
-    }
-
-    // Coba play saat DOM siap
-    startAudio();
-
-    // Jaga-jaga: jika autoplay ditolak, play saat ada interaksi
-    document.addEventListener('click', startAudio, { once: true });
-    document.addEventListener('touchstart', startAudio, { once: true });
-  });
+  document.getElementById('play-btn').addEventListener('click', () => {
+    document.getElementById('background-audio').play();
+  });
 </script>
 </body>
 <script src="html5/lib/scripts/bootstrapper.min.js"></script>
