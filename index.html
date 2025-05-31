@@ -418,6 +418,31 @@
   
 
   <link rel="stylesheet" href="html5/data/css/output.min.css" data-noprefix/>
+  <audio id="background-audio" autoplay loop muted>
+  <source src="https://media.githubusercontent.com/media/nikojuur/pembelajaran1/refs/heads/main/musikku.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var audio = document.getElementById('background-audio');
+
+    // Coba play audio, kalau browser blok autoplay (biasanya harus user interaction)
+    function startAudio() {
+      audio.muted = false;  // Buka mute kalau autoplay sukses
+      audio.play().catch(() => {
+        console.warn("Autoplay gagal, menunggu interaksi pengguna.");
+      });
+    }
+
+    // Jalankan saat halaman siap
+    startAudio();
+
+    // Jika autoplay gagal, play saat pengguna klik/tap
+    document.addEventListener('click', startAudio, { once: true });
+    document.addEventListener('touchstart', startAudio, { once: true });
+  });
+</script>
 </body>
 <script src="html5/lib/scripts/bootstrapper.min.js"></script>
 </html>
